@@ -1,0 +1,260 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Weblogin" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="vRowcounter" Type="InArgument(x:Int32)" />
+    <x:Property Name="vLastname" Type="InArgument(x:String)" />
+    <x:Property Name="vFirstname" Type="InArgument(x:String)" />
+    <x:Property Name="vDob" Type="InArgument(x:String)" />
+    <x:Property Name="vFirstDOS" Type="InArgument(x:String)" />
+    <x:Property Name="vLastDOS" Type="InArgument(x:String)" />
+    <x:Property Name="VChargeAmnt" Type="InArgument(x:Decimal)" />
+    <x:Property Name="mEMBERID" Type="InArgument(x:String)" />
+    <x:Property Name="vWant_to_login" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="vNPI" Type="InArgument(x:Double)" />
+    <x:Property Name="DOSerror" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="FilePath" Type="InArgument(x:String)" />
+    <x:Property Name="Vstate" Type="InArgument(x:String)" />
+    <x:Property Name="FinalNotes" Type="InOutArgument(x:String)" />
+    <x:Property Name="Remark" Type="InOutArgument(x:String)" />
+    <x:Property Name="WebsiteStatus" Type="InOutArgument(x:String)" />
+    <x:Property Name="Bot_Status" Type="InOutArgument(x:String)" />
+    <x:Property Name="Gender" Type="InArgument(x:String)" />
+    <x:Property Name="PatientAccNo" Type="InArgument(x:Double)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="TaxID" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1133,831</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Availitylogin_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>DateTimeComparer</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="476,475" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="LoginError" />
+      <Variable x:TypeArguments="x:String" Default="[In_Config(&quot;Tricare_healthnet_Username&quot;).ToString]" Name="vWebUsername" />
+      <Variable x:TypeArguments="x:String" Default="[In_Config(&quot;Tricare_healthnet_Password&quot;).ToString]" Name="vWebPassword" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,383" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Website Login" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="https://www.tricare-west.com/idp/prov-login.fcc?TYPE=33554433&amp;REALMOID=06-000de4d7-3bd5-1971-8e25-c17aac133d7f&amp;GUID=1&amp;SMAUTHREASON=0&amp;METHOD=GET&amp;SMAGENTNAME=-SM-LAYy9aslX%2fGCugitKMl%2fiG9AWPtpDz8yHheDhD5NXnviKXzZ5x1tljpiTb7MVzYU&amp;TARGET=-SM-%2fcontent%2fhnfs%2fhome%2ftw%2fprov%2fsecure%2fapp--forms%2fcheck--claim--status%2fclaim--search%2ehtml" Name="vWeb_URL" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="973,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot; Insurance Website logged in or not&quot;]" />
+            <ui:UiElementExists DisplayName="Element Exists 'chrome.exe Availity'" Exists="[vWant_to_login]" sap:VirtualizedContainerService.HintSize="973,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="0fdcd589c9e42d3bfaafb096bb4560ef" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl tag='P' innertext='*Logged in as:*Log Out*' /&gt;" TimeoutMS="3000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[vWant_to_login]" sap:VirtualizedContainerService.HintSize="973,1232" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Tricare healthnet web Logged in&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="552,1084" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="chrome" />
+                  <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="510,930" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[vWeb_URL]">
+                    <ui:OpenBrowser.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,831" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot; Logging in to the Tricare healthnet  web portal&quot;]" />
+                          <ui:OnImageAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" DisplayName="On Image Appear 'chrome.exe Log'" sap:VirtualizedContainerService.HintSize="434,546" sap2010:WorkflowViewState.IdRef="OnImageAppear_2" RepeatForever="False">
+                            <ui:OnImageAppear.Body>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,400" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into 'Chrome_RenderWidgetHost...'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[vWebUsername.Trim]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="a1494881574a74a2e201711f1343ba41" Selector="&lt;webctrl id='username_bene' tag='INPUT' /&gt;" TimeoutMS="10000" WaitForReady="INTERACTIVE" />
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                                <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into 'Chrome_RenderWidgetHost...'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[vWebPassword.Trim+ &quot;[k(enter)]&quot;]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b490f09021bc9b45a7948c4eef094217" Selector="&lt;webctrl id='password_bene' tag='INPUT' /&gt;" TimeoutMS="10000" WaitForReady="INTERACTIVE" />
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                              </Sequence>
+                            </ui:OnImageAppear.Body>
+                            <ui:OnImageAppear.Image>
+                              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+                            </ui:OnImageAppear.Image>
+                            <ui:OnImageAppear.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="30000" WaitForReady="INTERACTIVE" />
+                            </ui:OnImageAppear.Target>
+                          </ui:OnImageAppear>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:OpenBrowser.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:OpenBrowser>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Invoking Search page Result for Tricare healthnet Portal&quot;]" />
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="NavigateToSearchPage.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="vLastname">[vLastname]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="vFirstname">[vFirstname]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="vRowcounter">[vRowcounter]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="vDob">[vDob]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="vFirstDOS">[vFirstDOS]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="vLastDOS">[vLastDOS]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="VChargeAmnt">[VChargeAmnt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="mEMBERID">[mEMBERID]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="vNPI">[vNPI]</InArgument>
+              <InOutArgument x:TypeArguments="x:Boolean" x:Key="DOSerror">[DOSerror]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="FilePath">[FilePath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="VState">[Vstate]</InArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="Finalnotes">[FinalNotes]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="Remark">[Remark]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="WebsiteStatus">[WebsiteStatus]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="Bot_Status">[Bot_Status]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Gender">[Gender]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="PatientAccNo">[PatientAccNo]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="TaxID">[TaxID]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,221" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[Remark]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">Unable to login to the insurance website, Please check credentials and Try again later</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

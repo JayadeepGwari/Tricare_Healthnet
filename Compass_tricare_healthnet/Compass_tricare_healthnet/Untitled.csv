@@ -1,0 +1,5 @@
+﻿Procedure Code,Service Begin Date,Service End Date,Billed Amount,Tricare Approved Amount,Claim Line Status,Claim Line Denial Code,Claim Line  Denial Description
+99221,07/18/2020,07/18/2020,$300.00,$93.79,Paid,Claim Line Denial Code :,Claim Line Denial Description :
+99233,07/20/2020,07/20/2020,$200.00,$95.96,Paid,Claim Line Denial Code :,Claim Line Denial Description :
+99233,07/21/2020,07/21/2020,$200.00,$95.96,Paid,Claim Line Denial Code :,Claim Line Denial Description :
+99239,07/22/2020,07/22/2020,$200.00,$98.79,Paid,Claim Line Denial Code :,Claim Line Denial Description :

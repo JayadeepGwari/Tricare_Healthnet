@@ -1,0 +1,284 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ROBOStatus" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:s1="clr-namespace:System;assembly=mscorlib" xmlns:s2="clr-namespace:System;assembly=System" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sae="clr-namespace:System.Activities.Expressions;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sas="clr-namespace:System.Activities.Statements;assembly=System.Activities" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sc1="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd2="clr-namespace:System.Diagnostics;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd3="clr-namespace:System.Drawing;assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:si="clr-namespace:System.IO;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:uc="clr-namespace:UiPath.Core;assembly=UiPath.System.Activities" xmlns:uc1="clr-namespace:UiPath.Core;assembly=UiPath.UiAutomation.Activities" xmlns:uca="clr-namespace:UiPath.Core.Activities;assembly=UiPath.System.Activities" xmlns:uca1="clr-namespace:UiPath.Core.Activities;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="fNotes" Type="InArgument(x:String)" />
+    <x:Property Name="ECW_Status" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1459,945</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>DateTimeComparer</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <If Condition="[String.IsNullOrEmpty(fNotes)]" sap:VirtualizedContainerService.HintSize="1469,780" sap2010:WorkflowViewState.IdRef="If_9">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg1:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If.Then>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+    </If.Then>
+    <If.Else>
+      <Sequence sap:VirtualizedContainerService.HintSize="1162,632" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg1:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence sap:VirtualizedContainerService.HintSize="1120,540" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[fNotes.ToLower.Contains(&quot;denied&quot;)]" sap:VirtualizedContainerService.HintSize="1078,448" sap2010:WorkflowViewState.IdRef="If_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg1:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <If Condition="[fNotes.ToLower.Contains(&quot;cordination of benefits&quot;) Or fNotes.ToLower.Contains(&quot;cob&quot;) Or fNotes.ToLower.Contains(&quot;eob&quot;) Or fNotes.ToLower.Contains(&quot;covered manged care plan&quot;) Or fNotes.ToLower.Contains(&quot;correct payer&quot;) Or fNotes.ToLower.Contains(&quot;correct contractor&quot;) Or fNotes.ToLower.Contains(&quot;proper payer&quot;) Or fNotes.ToLower.Contains(&quot;proper processor&quot;) Or fNotes.ToLower.Contains(&quot;enrolled in a hospice&quot;) Or fNotes.ToLower.Contains(&quot;payer refund &quot;) Or fNotes.ToLower.Contains(&quot;another payer&quot;) Or fNotes.ToLower.Contains(&quot;liability carrier&quot;) Or fNotes.ToLower.Contains(&quot;work related injury&quot;) Or fNotes.ToLower.Contains(&quot;prior payer&quot;) Or fNotes.ToLower.Contains(&quot;non physician service&quot;) Or fNotes.ToLower.Contains(&quot;previous payer&quot;) Or fNotes.ToUpper.Contains(&quot;OTHER INSURANCE COVERAGE INFORMATION&quot;) Or fNotes.ToUpper.Contains(&quot;INVESTIGATING EXISTENCE OF OTHER INSURANCE COVERAGE&quot;) Or fNotes.ToUpper.Contains(&quot;MEDICARE ENTITLEMENT INFORMATION IS REQUIRED TO DETERMINE PRIMARYCOVERAGE&quot;) Or  fNotes.ToLower.Contains(&quot;injury/illness Is covered By the liability carrier&quot;) Or fNotes.ToLower.Contains(&quot;care may be covered by another payer per coordination of benefits&quot;) Or fNotes.ToLower.Contains(&quot;impact of prior payer(s) adjudication including payments and/or adjustments&quot;) Or fNotes.ToLower.Contains(&quot;claim/service not covered by this payer/contractor. you must send the claim/service to the correct payer/contractor&quot;) Or fNotes.ToLower.Contains(&quot;coordination of benefits information to another payer&quot;) Or fNotes.ToLower.Contains(&quot;claim/service has been transferred to the proper payer/processor for processing. claim/service not covered by this payer/processor.&quot;) Or fNotes.ToLower.Contains(&quot;this code is to be used by providers/payers providing coordination of benefits information to another payer in the 837 transaction only&quot;) Or fnotes.ToUpper.Contains(&quot;OUR RECORDS SHOW YOU HAVE COVERAGE WITH ANOTHER CARRIER&quot;) Or fNotes.ToUpper.Contains(&quot;PLEASE SEND US A COPY OF THE EXPLANATION OF BENEIFTS (EOB) FROM YOUR PRIMARY CARRIER THAT MATCHES ALL SERVICE ON THIS CLAIM&quot;) Or fNotes.ToLower.Contains(&quot;payer refund amount - not our patient&quot;) Or fNotes.ToLower.Contains(&quot;claim lacks prior payer payment information&quot;) Or fNotes.ToLower.Contains(&quot;claim/ Line has been denied claim submitted to incorrect payer&quot;) Or fNotes.ToLower.Contains(&quot;denied for failure of this provider, another provider or the subscriber to supply requested information to a previous payer for their adjudication&quot;) Or fNotes.ToLower.Contains(&quot;denied for failure of this provider, another provider or the subscriber to supply requested information to a previous payer for their adjudication&quot;) Or fNotes.ToLower.Contains(&quot;not a work related injury/illness and thus not the liability of the workers' compensation carrier &quot;) Or fNotes.ToLower.Contains(&quot;this care may be covered by another payer per coordination of benefits&quot;) Or fNotes.ToLower.Contains(&quot;this is a work-related injury/illness and thus the liability of the worker's compensation carrier.&quot;)]" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg1:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg1:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">ROBO - COB denial</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <If Condition="[fNotes.ToLower.Contains(&quot;auth number Missing,Invalid&quot;) Or fNotes.ToLower.Contains(&quot;refereral absent&quot;) Or fNotes.ToLower.Contains(&quot;refereral exceeded.&quot;) Or fNotes.ToLower.Contains(&quot;Precertification absent&quot;) Or fNotes.ToLower.Contains(&quot;Precertification exceeded&quot;) Or fNotes.ToLower.Contains(&quot;Authorization exceeded&quot;) Or fNotes.ToLower.Contains(&quot;Authorization absent&quot;) Or fNotes.ToLower.Contains(&quot;Service was not prescribed prior to delivery.&quot;) Or fNotes.ToLower.Contains(&quot;pre-treatment absent&quot;) Or fNotes.ToLower.Contains(&quot;notification absent&quot;) Or fNotes.ToLower.Contains(&quot;prior authorization&quot;) Or fNotes.ToLower.Contains(&quot;no auth&quot;) Or fNotes.ToLower.Contains(&quot;service not authorized&quot;) Or fNotes.ToLower.Contains(&quot;services obtained without a referral&quot;) Or fNotes.ToLower.Contains(&quot;np deny no precert&quot;) Or fNotes.ToLower.Contains(&quot;payment adjusted because pre-certification/authorization not received in a timely fashion&quot;) Or fNotes.ToLower.Contains(&quot;payment denied/reduced for absence of, or exceeded, pre-certification/authorization&quot;) Or fNotes.ToLower.Contains(&quot;precertification/authorization exceeded&quot;) Or fNotes.ToLower.Contains(&quot;precertification/authorization/notification absent&quot;) Or fNotes.ToLower.Contains(&quot;procedure billed is not authorized per your clinical laboratory improvement Amendment (clia) proficiency test&quot;) Or fNotes.ToLower.Contains(&quot;referral absent or exceeded&quot;) Or fNotes.ToLower.Contains(&quot;service was not prescribed prior to delivery&quot;) Or fnotes.ToLower.Contains(&quot;services denied at the time authorization/pre-certification was requested&quot;) Or fNotes.ToLower.Contains(&quot;services not provided or authorized by designated (network/primary care) providers&quot;) Or fNotes.ToLower.Contains(&quot;the authorization number is missing, invalid, or does not apply to the billed services or provider&quot;) Or fNotes.ToLower.Contains(&quot;referral&quot;)]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg1:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">ROBO - auth denial</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <If Condition="[fNotes.ToLower.Contains(&quot;provider is not&quot;) Or fNotes.ToLower.Contains(&quot;provider type&quot;)Or fNotes.ToLower.Contains(&quot;provider and expired&quot;) Or fNotes.ToLower.Contains(&quot;provider and not on file&quot;) Or fNotes.ToLower.Contains(&quot;payment is adjusted&quot;) Or fNotes.ToLower.Contains(&quot;provider is not eligible&quot;) Or fNotes.ToLower.Contains(&quot;national provider Identifier&quot;) Or fNotes.ToLower.Contains(&quot;services not provided by providers &quot;) Or fNotes.ToLower.Contains(&quot;provider not certified&quot;) Or fNotes.ToLower.Contains(&quot;services not provided by network&quot;) Or fNotes.ToLower.Contains(&quot;procedure was partially or fully furnished by another provider.&quot;) Or fNotes.ToLower.Contains(&quot;service was partially or fully furnished by another provider&quot;) Or fNotes.ToLower.Contains(&quot;information requested from the billing provider was not provided&quot;) Or fNotes.ToLower.Contains(&quot;information requested from the rendering provider was not provided&quot;) Or fNotes.ToLower.Contains(&quot;provider negotiated rate expired.&quot;) Or fNotes.Contains(&quot;provider contracted not on file&quot;) Or fNotes.ToLower.Contains(&quot;not covered unless the provider accepts assignment.&quot;) Or fNotes.ToLower.Contains(&quot;the diagnosis is inconsistent with the provider type&quot;) Or fNotes.ToLower.Contains(&quot;multiple physicians are not covered&quot;)Or fNotes.ToLower.Contains(&quot;procedure code is inconsistent with the provider type&quot;)Or fNotes.Contains (&quot;PROVIDER ID OR NPI&quot;) Or fNotes.ToLower.Contains(&quot;exceeds the contracted maximum number of hours/days/units by this provider for this period&quot;) Or  fNotes.ToLower.Contains(&quot;Information requested from the billing/rendering provider was not provided or not provided timely or was insufficient/incomplete&quot;) Or fNotes.ToLower.Contains(&quot;multiple physicians/assistants are not covered in this case&quot;) Or fNotes.ToLower.Contains(&quot;national provider identifier - missing&quot;) Or fNotes.ToLower.Contains(&quot;not covered unless the provider accepts assignment&quot;) Or fNotes.ToLower.Contains(&quot;payment is adjusted when performed/billed by a provider&quot;) Or fNotes.ToLower.Contains(&quot;procedure/service was partially or fully furnished by another provider&quot;) Or fNotes.ToLower.Contains(&quot;provider contracted/negotiated rate expired or not on file&quot;) Or fNotes.ToUpper.Contains(&quot;RENDERING CLINICIAN HAS NOT BEEN INDIVIDUALLY CREDENTIALED&quot;) Or fNotes.ToLower.Contains(&quot;services not provided by network/primary care providers&quot;) Or fNotes.ToLower.Contains(&quot;services not provided or authorized by designated (network/primary care) providers&quot;) Or fNotes.ToLower.Contains(&quot;the diagnosis is inconsistent with the provider type&quot;) Or fNotes.ToLower.Contains(&quot;the prescribing/ordering provider is not eligible to prescribe/order the service billed&quot;) Or fNotes.ToLower.Contains(&quot;the procedure code is inconsistent with the provider type/specialty (taxonomy)&quot;) Or fNotes.ToLower.Contains(&quot;the referring provider is not eligible to refer the service billed&quot;) Or fNotes.ToLower.Contains(&quot;the referring/prescribing/rendering provider is not eligible to refer/prescribe/order/perform the service billed&quot;) Or fNotes.ToLower.Contains(&quot;the rendering provider is not eligible to perform the service billed&quot;) Or fNotes.ToLower.Contains(&quot;this provider was not certified/eligible to be paid for this procedure/service on this date of service&quot;)]" sap:VirtualizedContainerService.HintSize="898,448" sap2010:WorkflowViewState.IdRef="If_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">["ROBO-provider Issue"]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <If Condition="[fNotes.ToLower.Contains(&quot;coverage terminated&quot;) Or fNotes.ToLower.Contains(&quot;patient cannot be identified&quot;) Or fNotes.ToLower.Contains(&quot;lifetime benefit maximum&quot;) Or fNotes.ToLower.Contains(&quot;benefit maximum&quot;) Or fNotes.ToLower.Contains(&quot;occurrence&quot;) Or fNotes.ToLower.Contains(&quot;identification number&quot;) Or fNotes.ToLower.Contains(&quot;diagnosis is not covered&quot;) Or fNotes.ToLower.Contains(&quot;required waiting requirements&quot;) Or fNotes.ToLower.Contains(&quot;service is not covered &quot;) Or fNotes.ToLower.Contains(&quot;equipment is not covered&quot;) Or fNotes.ToLower.Contains(&quot;drug is not covered &quot;) Or fNotes.ToLower.Contains(&quot;Information insufficient&quot;) Or fNotes.ToLower.Contains(&quot;Information incomplete&quot;) Or fNotes.ToLower.Contains(&quot;coverage guidelines were not met&quot;) Or fNotes.ToLower.Contains(&quot;coverage guidelines exceeded&quot;) Or fNotes.ToLower.Contains(&quot;program guidelines exceeded&quot;) Or fNotes.ToLower.Contains(&quot;program guidelines were not met&quot;) Or fNotes.ToLower.Contains(&quot;only one visit&quot;) Or fNotes.ToLower.Contains(&quot;non-covered visits&quot;) Or fNotes.ToLower.Contains(&quot;coverage terminated&quot;) Or fNotes.ToLower.Contains(&quot;prior to coverage&quot;) Or fNotes.ToLower.Contains(&quot;benefit exclusion&quot;) Or fNotes.ToLower.Contains(&quot;Coverage not in effect&quot;) Or fNotes.ToLower.Contains(&quot;eligible dependent&quot;) Or fNotes.ToLower.Contains(&quot;no dependent coverage&quot;) Or fNotes.ToLower.Contains(&quot;required eligibility&quot;) Or fNotes.ToLower.Contains(&quot;new patient qualifications&quot;) Or fNotes.ToLower.Contains(&quot;ineligible periods of coverage&quot;) Or fNotes.ToLower.Contains(&quot;newborn's services&quot;) Or fNotes.ToLower.Contains(&quot;procedure not approved&quot;) Or fNotes.ToLower.Contains(&quot;diagnosis is inconsistent&quot;) Or fNotes.ToLower.Contains(&quot;non-covered services&quot;) Or fNotes.ToLower.Contains(&quot;patient cannot be identified&quot;) Or fNotes.ToLower.Contains(&quot;spend down requirements&quot;)Or fNotes.ToLower.Contains(&quot;invalid non-covered days&quot;) Or fNotes.ToLower.Contains(&quot;individual not a covered person&quot;) Or fNotes.ToLower.Contains(&quot;expenses incurred after coverage terminated&quot;) Or fnotes.ToLower.Contains(&quot;member not eligible&quot;) Or fNotes.ToLower.Contains(&quot;services are not covered under the member's benefit plan&quot;) Or fNotes.ToLower.Contains(&quot;benefit maximum for this time period or occurrence has been reached.&quot;) Or fNotes.ToLower.Contains(&quot;charges for outpatient services are not covered when performed within a period of time prior to or after inpatient services.&quot;) Or fNotes.ToLower.Contains(&quot;claim spans eligible and ineligible periods of coverage, this is the reduction for the ineligible period. (use only with group code pr)&quot;) Or fNotes.ToLower.Contains(&quot;claim spans eligible and ineligible periods of coverage.&quot;) Or fNotes.ToLower.Contains(&quot;claim/service has invalid non-covered days.&quot;) Or fNotes.ToLower.Contains(&quot;coverage not in effect at the time the service was provided.&quot;) Or fNotes.ToLower.Contains(&quot;coverage/program guidelines were not met or were exceeded.&quot;) Or fNotes.ToLower.Contains(&quot;dependents not covered&quot;) Or fNotes.ToLower.Contains(&quot;entity not eligible for benefits for submitted dates of service &quot;) Or fNotes.ToLower.Contains(&quot;exp after covg term&quot;) Or fNotes.ToLower.Contains(&quot;expenses incurred after coverage terminated.&quot;) Or fNotes.ToLower.Contains(&quot;expenses incurred prior to coverage.&quot;) Or fNotes.ToLower.Contains(&quot;information requested from the patient/insured/responsible party was not provided or was insufficient/incomplete. at least one remark code must be provided (may be comprised of either the ncpdp reject reason code, or remittance advice remark code that is not an alert.)&quot;) Or fNotes.ToLower.Contains(&quot;injury/illness was the result of an activity that is a benefit exclusion.&quot;) Or fNotes.ToLower.Contains(&quot;insured has no coverage for newborns.&quot;) Or fNotes.ToLower.Contains(&quot;insured has no dependent coverage.&quot;) Or fNotes.ToLower.Contains(&quot;lifetime benefit maximum has been reached for this service/benefit category.&quot;) Or fNotes.ToLower.Contains(&quot;lifetime benefit maximum has been reached.&quot;) Or fNotes.ToLower.Contains(&quot;'new patient' qualifications were not met.&quot;) Or fNotes.ToLower.Contains(&quot;newborn's services are covered in the mother's allowance.&quot;) Or fNotes.ToLower.Contains(&quot;non-covered visits.&quot;) Or fNotes.ToLower.Contains(&quot;only one visit or consultation per physician per day is covered.&quot;) Or fNotes.ToLower.Contains(&quot;our records indicate that this dependent is not an eligible dependent as defined. effective 02/01/2018: our records indicate the patient is not an eligible dependent.&quot;) Or fNotes.ToLower.Contains(&quot;patient cannot be identified as our insured.&quot;) Or fNotes.ToLower.Contains(&quot;patient has not met the required eligibility requirements.&quot;) Or fNotes.ToLower.Contains(&quot;patient has not met the required spend down requirements.&quot;) Or fNotes.ToLower.Contains(&quot;patient has not met the required waiting requirements. usage: refer to the 835 healthcare policy identification segment (loop 2110 service payment information ref), if present.&quot;) Or fNotes.ToLower.Contains(&quot;patient is responsible for amount of this claim/service through 'set aside arrangement' or other agreement. (use only with group code pr)  at least one remark code must be provided (may be comprised of either the ncpdp reject reason code, or remittance advice remark code that is not an alert.)&quot;) Or fNotes.ToLower.Contains(&quot;patient refused the service/procedure.&quot;) Or fNotes.ToLower.Contains(&quot;patient/insured health identification number and name do not match.&quot;) Or fNotes.ToLower.Contains(&quot;payment adjusted because the patient has not met the required eligibility, spend down, waiting, or residency requirements.&quot;) Or fNotes.ToLower.Contains(&quot;procedure/product not approved by the food and drug administration.&quot;) Or fNotes.ToLower.Contains(&quot;service(s) have been considered under the patient's medical plan. benefits are not available under this dental plan.&quot;) Or fNotes.ToLower.Contains(&quot;service/equipment was not prescribed by a physician.&quot;) Or fNotes.ToLower.Contains(&quot;the diagnosis is inconsistent with the patient's age. usage: refer to the 835 healthcare policy identification segment (loop 2110 service payment information ref), if present.&quot;) Or fNotes.ToLower.Contains(&quot;these are non-covered services because this is a pre-existing condition. usage: refer to the 835 healthcare policy identification segment (loop 2110 service payment information ref), if present.&quot;) Or fNotes.ToLower.Contains(&quot;this (these) diagnosis(es) is (are) not covered. usage: refer to the 835 healthcare policy identification segment (loop 2110 service payment information ref), if present.&quot;) Or fNotes.ToLower.Contains(&quot;this injury/illness is the liability of the no-fault carrier.&quot;) Or fNotes.ToLower.Contains(&quot;this product/procedure is only covered when used according to fda recommendations.&quot;) Or fNotes.ToLower.Contains(&quot;this service/equipment/drug is not covered under the patient?s current benefit plan&quot;)]" sap:VirtualizedContainerService.HintSize="653,300" sap2010:WorkflowViewState.IdRef="If_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["ROBO-ineligible"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg1:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["ROBO - Investigate"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </If.Else>
+                      </If>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </If.Then>
+            <If.Else>
+              <If Condition="[fNotes.ToLower.Contains(&quot;Pending &quot;) Or fNotes.ToLower.Contains(&quot;in process&quot;) Or fNotes.Contains(&quot;PENDING &quot;) Or fNotes.ToLower.Contains(&quot;set to pay&quot;)]" sap:VirtualizedContainerService.HintSize="549,300" sap2010:WorkflowViewState.IdRef="If_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg1:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg1:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">["ROBO - in process"]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <If Condition="[fNotes.ToLower.Contains(&quot;deductible&quot;) Or fNotes.ToLower.Contains(&quot;paid&quot;)]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg1:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["ROBO - paid"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <If Condition="[fNotes.ToLower.Contains(&quot; not on file&quot;)]" sap:VirtualizedContainerService.HintSize="484,300" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg1:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ECW_Status]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">["ROBO-no claim on file"]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </If.Then>
+                      </If>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </If.Else>
+          </If>
+        </Sequence>
+      </Sequence>
+    </If.Else>
+  </If>
+</Activity>

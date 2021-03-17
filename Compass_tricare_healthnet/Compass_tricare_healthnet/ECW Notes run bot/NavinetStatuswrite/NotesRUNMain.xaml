@@ -1,0 +1,723 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="FloridaWorkbook" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1250,2758</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>DateTimeComparer</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Final Output" sap:VirtualizedContainerService.HintSize="1260,2593" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:GenericValue" Default="[1]" Name="row_num" />
+      <Variable x:TypeArguments="sd:DataTable" Name="outputData" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="ClaimId" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="Robo_Status" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="FinalNotes" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="BotStatus" />
+      <Variable x:TypeArguments="x:Boolean" Name="existCancel" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1218,2501" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[FloridaWorkbook]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1184,2392" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteCell Cell="B1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="1142,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="page" Text="Patient DOB" />
+            <ui:ExcelWriteCell Cell="C1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="1142,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="page" Text="Patient NO" />
+            <ui:ExcelWriteCell Cell="D1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="1142,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="page" Text="Patient ID" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[outputData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1142,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="page">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <Assign sap:VirtualizedContainerService.HintSize="1142,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="ui:GenericValue">[row_num]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="ui:GenericValue">[2]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[outputData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1142,1720" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence sap:VirtualizedContainerService.HintSize="1092,1573" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="Get Data from sheet" sap:VirtualizedContainerService.HintSize="1050,741" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="4" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
+                        <ui:GetRowItem.Value>
+                          <OutArgument x:TypeArguments="ui:GenericValue">[ClaimId]</OutArgument>
+                        </ui:GetRowItem.Value>
+                      </ui:GetRowItem>
+                      <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="40" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[row]">
+                        <ui:GetRowItem.Value>
+                          <OutArgument x:TypeArguments="ui:GenericValue">[BotStatus]</OutArgument>
+                        </ui:GetRowItem.Value>
+                      </ui:GetRowItem>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[BotStatus]" />
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
+                      <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="42" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
+                        <ui:GetRowItem.Value>
+                          <OutArgument x:TypeArguments="ui:GenericValue">[Robo_Status]</OutArgument>
+                        </ui:GetRowItem.Value>
+                      </ui:GetRowItem>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[Robo_Status]" />
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
+                      <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="43" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
+                        <ui:GetRowItem.Value>
+                          <OutArgument x:TypeArguments="ui:GenericValue">[FinalNotes]</OutArgument>
+                        </ui:GetRowItem.Value>
+                      </ui:GetRowItem>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[FinalNotes]" />
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
+                    </Sequence>
+                    <If Condition="[String.IsNullOrEmpty(FinalNotes)]" sap:VirtualizedContainerService.HintSize="1050,600" sap2010:WorkflowViewState.IdRef="If_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <If Condition="[string.IsNullOrEmpty( BotStatus)]" sap:VirtualizedContainerService.HintSize="521,453" sap2010:WorkflowViewState.IdRef="If_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ExcelWriteCell Cell="[&quot;AO&quot;+row_num.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="page" Text="Exception" />
+                              <ui:ExcelWriteCell Cell="[&quot;AS&quot;+row_num.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="page" Text="Unknown Error" />
+                            </Sequence>
+                          </If.Then>
+                        </If>
+                      </If.Then>
+                      <If.Else>
+                        <If Condition="[String.IsNullOrEmpty(BotStatus) or BotStatus.trim.Contains(&quot;Processed&quot;)]" sap:VirtualizedContainerService.HintSize="484,305" sap2010:WorkflowViewState.IdRef="If_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="242,158" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence DisplayName="Write data on ECW" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'eClinicalWorks.exe eCli...'" sap:VirtualizedContainerService.HintSize="726,106" sap2010:WorkflowViewState.IdRef="Activate_1">
+                                  <ui:Activate.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3620b6002d28933b9bcbff368f2efdf0" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='eClinicalWorks (Robo*,Robo* )  ' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Activate.Target>
+                                </ui:Activate>
+                                <ui:GetActiveWindow ApplicationWindow="{x:Null}" DisplayName="Get Active Window" sap:VirtualizedContainerService.HintSize="726,192" sap2010:WorkflowViewState.IdRef="GetActiveWindow_1">
+                                  <ui:GetActiveWindow.Body>
+                                    <ActivityAction x:TypeArguments="x:Object">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:GetActiveWindow.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetActiveWindow>
+                                <ui:SetValue ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'editable text'" sap:VirtualizedContainerService.HintSize="726,134" sap2010:WorkflowViewState.IdRef="SetValue_2" Text="[ClaimId.Trim]">
+                                  <ui:SetValue.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="50b4a57a73be7aff97b7dda4bf99ad88" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='eClinicalWorks (Robo*,Robo* )  ' /&gt;&lt;wnd cls='ThunderRT6FormDC' title='Generate Batch' /&gt;&lt;wnd cls='ThunderRT6TextBox' idx='14' /&gt;&lt;ctrl role='editable text' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:SetValue.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:SetValue>
+                                <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="726,198" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+                                  <ui:AnchorBase.Action>
+                                    <ActivityAction x:TypeArguments="ui:Anchor">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                      </ActivityAction.Argument>
+                                      <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'eClinicalWorks.exe eCli...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:ClickImage.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:ClickImage.CursorPosition>
+                                        <ui:ClickImage.Image>
+                                          <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEMAAAAQCAYAAABN0MIqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFwSURBVFhH7ZTRjcMgDIaZinmY5VSJYRjjpD4yCxtwGOrGNoYcUXs9RUH6oxhjJ/4wmJRSvtR0wSC6YBB1MG5ft13JmLNIhTEb9+/7aYEcggHj74DE7K3NPmq+12oZhjGGScanFLIzLodu/qg+DAMEhWIXaAN8p4aBXWHqs3XBCMghGMHVGJQLv/EJGNFnW/zWx2LLb1G7vTu35WwxuLbXE0YHoggL1oAsw6hF0B2GdQ975qMw6rpR8dKGdwqV5tTFYHQg4P1VMGDnXWBzoexa/dmZD2F46ByZdw8GXw85Z92hdgaCwII/D6O0uSstz3YatA6Dx3N1d4YEAXM4T8cyDHkUqD3zsTsDctOCwCZx9d4ZwRBrFTEYoHpcygcRRCsajksDgGMOY7u0mh4/VYvc5tkuDX3iAsX81udY7OjtM6Z1D4Wx5eM5dakw6DCm3SUlVxUCGcP4L5KdsS8VBhRKpQFp8z0MuhNUct37tQoj5R/dG2b+ADRXUQAAAABJRU5ErkJggg==" />
+                                        </ui:ClickImage.Image>
+                                        <ui:ClickImage.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:ClickImage.Target>
+                                      </ui:ClickImage>
+                                    </ActivityAction>
+                                  </ui:AnchorBase.Action>
+                                  <ui:AnchorBase.AnchorProvider>
+                                    <ui:WaitImageAppear FoundElement="{x:Null}" DisplayName="Find Image 'eClinicalWorks.exe eCli...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitImageAppear_1">
+                                      <ui:WaitImageAppear.Image>
+                                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEgAAAAOCAYAAACM7Fo2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVFhH7ZVrjsMgDIQ5FefhLKtKHIZjrNSfnCU3YBmog+0AeWgf1bZIE0KMnfIxoWZZlvTWWCsgY8y77/W4cN0+brvSOf9ZGwcBwKzdP+8vBanroFkDILTfgxSTtzb52Iv9vE47CPO4KL8pJGdcCpvnV/UkgEgABGHx5JZeQ+ylAGGx5B5TrtUtI0iXAAVXckguHIkpQNEnm+PWxzzW7+Ljeu9cq1lzaO4xCQehrXCyCEIP0mlAZWHcCZj3GM9iHFCZNwKix7jnoHnN4xIO2sDB/XcBgkNcEM9C3t2ygFmMAHk4TNfdAyTno+ZZF3UdRHAIwt8Dypvn8ueS39ccAZ0HJPP3tTmDNBw6tDWk04D0Z8THs5g4g1CbLxJjllfOsREgNfeghIMg+gcTwDIxiEOaA2oHY9Xjh5aFt+diN4cxdUhTfetTzOPo7ZpTXcYBtXqy5nEJB6EHFN6MycBKLyGNAT2LtIOuaElfT4UlB3DDfHEAAAAASUVORK5CYII=" />
+                                      </ui:WaitImageAppear.Image>
+                                      <ui:WaitImageAppear.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='eClinicalWorks (Robo*,Robo* )  ' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:WaitImageAppear.Target>
+                                    </ui:WaitImageAppear>
+                                  </ui:AnchorBase.AnchorProvider>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AnchorBase>
+                                <ui:OnImageAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" DisplayName="On Image Appear 'eClinicalWorks.exe  Cla...'" sap:VirtualizedContainerService.HintSize="726,1573" sap2010:WorkflowViewState.IdRef="OnImageAppear_2" RepeatForever="False">
+                                  <ui:OnImageAppear.Body>
+                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1427" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:Boolean" Name="clearAll" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'ThunderRT6ComboBox'" sap:VirtualizedContainerService.HintSize="484,134" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[Robo_Status.Trim]">
+                                        <ui:SelectItem.Items>
+                                          <scg:List x:TypeArguments="x:String" Capacity="50">
+                                            <x:String>Patient</x:String>
+                                            <x:String>AMBETTER OP SVCS</x:String>
+                                            <x:String>CPT in Review</x:String>
+                                            <x:String xml:space="preserve">Collector Working </x:String>
+                                            <x:String>Insurance Overpayment</x:String>
+                                            <x:String>Refund Research</x:String>
+                                            <x:String>authorization missing</x:String>
+                                            <x:String>MC UA LCD DIAG issue</x:String>
+                                            <x:String>MedicareIP records needed</x:String>
+                                            <x:String>Medicare IP records requested</x:String>
+                                            <x:String>NO PROGRESS NOTE FOUND</x:String>
+                                            <x:String>Documentation Missing</x:String>
+                                            <x:String>W/C missing documents</x:String>
+                                            <x:String>Enrollment Pending</x:String>
+                                            <x:String>Pending With Errors</x:String>
+                                            <x:String>Clinical Review</x:String>
+                                            <x:String>In review by payer</x:String>
+                                            <x:String>appeal sub 1st level</x:String>
+                                            <x:String>appeal sub 2nd level</x:String>
+                                            <x:String>Credentialing/Denied Issue</x:String>
+                                            <x:String>Pending</x:String>
+                                            <x:String>Ready to Submit (Electronic)</x:String>
+                                            <x:String>Print HCFA</x:String>
+                                            <x:String>Submitted</x:String>
+                                            <x:String>ERA PAYER DENIED</x:String>
+                                            <x:String>Resolve Denial -0- posted ERA</x:String>
+                                            <x:String>Genetics Review</x:String>
+                                            <x:String>Genetics 1st Appeal Sub</x:String>
+                                            <x:String>Genetics 2nd Appeal Sub</x:String>
+                                            <x:String>Genetic Denial</x:String>
+                                            <x:String>277 Pending</x:String>
+                                            <x:String>Clearinghouse Accepted</x:String>
+                                            <x:String>Clearinghouse Rejected</x:String>
+                                            <x:String>Insurance Accepted</x:String>
+                                            <x:String>Insurance Rejected</x:String>
+                                            <x:String>Code Correct Error</x:String>
+                                            <x:String>Interest</x:String>
+                                            <x:String xml:space="preserve">ADR Clinical Review </x:String>
+                                            <x:String>ALJ Clinical Review</x:String>
+                                            <x:String>MAC Clinical Review</x:String>
+                                            <x:String>Redeter clinical review</x:String>
+                                            <x:String>Recon clinical review</x:String>
+                                            <x:String>W/O following CRP</x:String>
+                                            <x:String>Paid following CRP</x:String>
+                                            <x:String>Capitation W/O</x:String>
+                                            <x:String>DENIED CREDENTIALS</x:String>
+                                            <x:String>MIRIAM MILLER</x:String>
+                                            <x:String>Needs Insurance Verification</x:String>
+                                            <x:String>Castillo hold until approved</x:String>
+                                            <x:String>Diagnosis not valid on LOG</x:String>
+                                          </scg:List>
+                                        </ui:SelectItem.Items>
+                                        <ui:SelectItem.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="048c646197eef15343421bb684efb579" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='Claim ' /&gt;&lt;wnd cls='ThunderRT6ComboBox' idx='1' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:SelectItem.Target>
+                                      </ui:SelectItem>
+                                      <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 3 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+                                        <TextExpression.Namespaces>
+                                          <sco:Collection x:TypeArguments="x:String">
+                                            <x:String>System.Activities</x:String>
+                                            <x:String>System.Activities.Statements</x:String>
+                                            <x:String>System.Activities.Expressions</x:String>
+                                            <x:String>System.Activities.Validation</x:String>
+                                            <x:String>System.Activities.XamlIntegration</x:String>
+                                            <x:String>Microsoft.VisualBasic.Activities</x:String>
+                                            <x:String>System</x:String>
+                                            <x:String>System.Collections.Generic</x:String>
+                                            <x:String>System.Data</x:String>
+                                            <x:String>System.Diagnostics</x:String>
+                                            <x:String>System.IO</x:String>
+                                            <x:String>System.Linq</x:String>
+                                            <x:String>System.Management.Automation</x:String>
+                                            <x:String>System.Net.Mail</x:String>
+                                            <x:String>System.Xml</x:String>
+                                            <x:String>System.Xml.Linq</x:String>
+                                            <x:String>UiPath.Library</x:String>
+                                            <x:String>System.Windows.Markup</x:String>
+                                          </sco:Collection>
+                                        </TextExpression.Namespaces>
+                                        <TextExpression.References>
+                                          <sco:Collection x:TypeArguments="AssemblyReference">
+                                            <AssemblyReference>System.Activities</AssemblyReference>
+                                            <AssemblyReference>mscorlib</AssemblyReference>
+                                            <AssemblyReference>System.Data</AssemblyReference>
+                                            <AssemblyReference>System</AssemblyReference>
+                                            <AssemblyReference>System.Core</AssemblyReference>
+                                            <AssemblyReference>System.Management.Automation</AssemblyReference>
+                                            <AssemblyReference>System.Xml</AssemblyReference>
+                                            <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                                            <AssemblyReference>UiPath.Library</AssemblyReference>
+                                            <AssemblyReference>PresentationFramework</AssemblyReference>
+                                            <AssemblyReference>WindowsBase</AssemblyReference>
+                                            <AssemblyReference>PresentationCore</AssemblyReference>
+                                            <AssemblyReference>System.Xaml</AssemblyReference>
+                                          </sco:Collection>
+                                        </TextExpression.References>
+                                        <sap2010:WorkflowViewState.ViewStateManager>
+                                          <sap2010:ViewStateManager>
+                                            <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                                          </sap2010:ViewStateManager>
+                                        </sap2010:WorkflowViewState.ViewStateManager>
+                                      </Delay>
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="Type Into 'TEXTAREA  Notes'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[FinalNotes.Trim]">
+                                              <ui:TypeInto.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="c213feed128e4e1da7a52f710d3fdf94" Selector="&lt;html app='eclinicalworks.exe' url='https://flcohsapp.ecwcloud.com/mobiledoc/jsp/dashboard/Claim*' /&gt;&lt;webctrl id='Notes' tag='TEXTAREA' /&gt;" TimeoutMS="1500">
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:TypeInto.Target>
+                                            </ui:TypeInto>
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
+                                      <ui:SetValue ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Set Text 'editable text'" sap:VirtualizedContainerService.HintSize="484,134" sap2010:WorkflowViewState.IdRef="SetValue_4" Text="[FinalNotes.trim]">
+                                        <ui:SetValue.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="50d093550c6393b8748f4aed7255c5d2" Selector="&lt;html app='eclinicalworks.exe' url='https://flcohsapp.ecwcloud.com/mobiledoc/jsp/dashboard/Claim*' /&gt;&lt;webctrl id='Notes' tag='TEXTAREA' /&gt;" TimeoutMS="5000" WaitForReady="INTERACTIVE" />
+                                        </ui:SetValue.Target>
+                                      </ui:SetValue>
+                                      <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 3 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+                                        <TextExpression.Namespaces>
+                                          <sco:Collection x:TypeArguments="x:String">
+                                            <x:String>System.Activities</x:String>
+                                            <x:String>System.Activities.Statements</x:String>
+                                            <x:String>System.Activities.Expressions</x:String>
+                                            <x:String>System.Activities.Validation</x:String>
+                                            <x:String>System.Activities.XamlIntegration</x:String>
+                                            <x:String>Microsoft.VisualBasic.Activities</x:String>
+                                            <x:String>System</x:String>
+                                            <x:String>System.Collections.Generic</x:String>
+                                            <x:String>System.Data</x:String>
+                                            <x:String>System.Diagnostics</x:String>
+                                            <x:String>System.IO</x:String>
+                                            <x:String>System.Linq</x:String>
+                                            <x:String>System.Management.Automation</x:String>
+                                            <x:String>System.Net.Mail</x:String>
+                                            <x:String>System.Xml</x:String>
+                                            <x:String>System.Xml.Linq</x:String>
+                                            <x:String>UiPath.Library</x:String>
+                                            <x:String>System.Windows.Markup</x:String>
+                                          </sco:Collection>
+                                        </TextExpression.Namespaces>
+                                        <TextExpression.References>
+                                          <sco:Collection x:TypeArguments="AssemblyReference">
+                                            <AssemblyReference>System.Activities</AssemblyReference>
+                                            <AssemblyReference>mscorlib</AssemblyReference>
+                                            <AssemblyReference>System.Data</AssemblyReference>
+                                            <AssemblyReference>System</AssemblyReference>
+                                            <AssemblyReference>System.Core</AssemblyReference>
+                                            <AssemblyReference>System.Management.Automation</AssemblyReference>
+                                            <AssemblyReference>System.Xml</AssemblyReference>
+                                            <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                                            <AssemblyReference>UiPath.Library</AssemblyReference>
+                                            <AssemblyReference>PresentationFramework</AssemblyReference>
+                                            <AssemblyReference>WindowsBase</AssemblyReference>
+                                            <AssemblyReference>PresentationCore</AssemblyReference>
+                                            <AssemblyReference>System.Xaml</AssemblyReference>
+                                          </sco:Collection>
+                                        </TextExpression.References>
+                                        <sap2010:WorkflowViewState.ViewStateManager>
+                                          <sap2010:ViewStateManager>
+                                            <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                                          </sap2010:ViewStateManager>
+                                        </sap2010:WorkflowViewState.ViewStateManager>
+                                      </Delay>
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:UiElementExists DisplayName="Element Exists 'INPUT  ClearAll'" Exists="[clearAll]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                                              <ui:UiElementExists.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="418ec9897ef7e5893138c90460074aa7" Selector="&lt;html app='eclinicalworks.exe' url='https://flcohsapp.ecwcloud.com/mobiledoc/jsp/dashboard/ClaimFollowData.jsp?ClaimNo=1274870&amp;amp;assignedToId=0&amp;amp;startDate=11/14/2019&amp;amp;assignedTo=&amp;amp;ptId=222411&amp;amp;claimOpen=False&amp;amp;session*&amp;amp;TrUserId=169926&amp;amp;ecwusrlogtblid=633191&amp;amp;ecwappprocessid=14464&amp;amp;rnd2=0.4970758&amp;amp;timestamp=14112019175852.546875' /&gt;&lt;webctrl id='ClearAll' tag='INPUT' /&gt;" TimeoutMS="1500">
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:UiElementExists.Target>
+                                            </ui:UiElementExists>
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,299" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <If Condition="[clearAll=True]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_4" />
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:SetValue DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="True" DisplayName="Set Text 'TEXTAREA  Notes'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="SetValue_3" Text="[FinalNotes.Trim]">
+                                              <ui:SetValue.Target>
+                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="c213feed128e4e1da7a52f710d3fdf94" Selector="&lt;html app='eclinicalworks.exe' url='https://flcohsapp.ecwcloud.com/mobiledoc/jsp/dashboard/ClaimFollowData.jsp?ClaimNo=910628&amp;amp;assignedToId=0&amp;amp;startDate=11/11/2019&amp;amp;assignedTo=&amp;amp;ptId=172716&amp;amp;claimOpen=False&amp;amp;session*&amp;amp;TrUserId=169926&amp;amp;ecwusrlogtblid=631695&amp;amp;ecwappprocessid=7208&amp;amp;rnd2=0.4038034&amp;amp;timestamp=11112019140942.332031' /&gt;&lt;webctrl id='Notes' tag='TEXTAREA' /&gt;">
+                                                  <ui:Target.TimeoutMS>
+                                                    <InArgument x:TypeArguments="x:Int32" />
+                                                  </ui:Target.TimeoutMS>
+                                                  <ui:Target.WaitForReady>
+                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                  </ui:Target.WaitForReady>
+                                                </ui:Target>
+                                              </ui:SetValue.Target>
+                                            </ui:SetValue>
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
+                                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'ThunderRT6CommandButton'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                        <ui:Click.CursorPosition>
+                                          <ui:CursorPosition Position="Center">
+                                            <ui:CursorPosition.OffsetX>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetX>
+                                            <ui:CursorPosition.OffsetY>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:CursorPosition.OffsetY>
+                                          </ui:CursorPosition>
+                                        </ui:Click.CursorPosition>
+                                        <ui:Click.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="8c06ba3660a47a4b443f0ae275249f18" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='Claim ' /&gt;&lt;wnd aaname='OK' cls='ThunderRT6CommandButton' title='&amp;amp;OK' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:Click.Target>
+                                      </ui:Click>
+                                      <ui:UiElementExists DisplayName="Element Exists 'ThunderRT6CommandButton'" Exists="[existCancel]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                        <ui:UiElementExists.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="848700040716f6956eb47db5ecc39b6c" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='Claim ' /&gt;&lt;wnd aaname='Cancel' cls='ThunderRT6CommandButton' title='&amp;amp;Cancel' /&gt;">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                            <ui:Target.WaitForReady>
+                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                            </ui:Target.WaitForReady>
+                                          </ui:Target>
+                                        </ui:UiElementExists.Target>
+                                      </ui:UiElementExists>
+                                      <If Condition="[existCancel=True]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </If>
+                                    </Sequence>
+                                  </ui:OnImageAppear.Body>
+                                  <ui:OnImageAppear.Image>
+                                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAA/kAAAAVCAYAAAAdKy5oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH7SURBVHhe7d3bjeIwGIDRvKx2a0pBqYMSUg3PFEAHFJPlD3HGGUwuo9Vq8JwjWcTEhOcv5tIMAAAAQBVEPgAAAFRC5AMAAEAlRD4AAABUQuQDAABAJUQ+AAAAVOIp8pummce/cxv69uO6TdvfnwnnoWvaoX9Mym790G6tAQAAgDcXvXy9XqfZszi31erlyI/HdJyNLxkjvRm68zQP9+f6cb4j8gEAAOAHiIj/9ftPMfTXzuXKkZ9GzPORndvnsYO/CPwFkQ8AAABJKeb3Bn54qvUU8JfLZRH144jz2ZpN4y5+d0/5V5aRf+6y95rvDORrpuPz49MBsS6W3fp2fl3rjgEAAABvLI/6I4EfXkb+Z5+jf5eI/Pn79yWvdvILYT8f398/XfPcLcN+nK/dVAAAAIDvL8X9kcAPuyM/dyjyD+zkp2h/jFeRn63fnAMAAMD7+Z6Rf+Q7+YsbAvG6UtiLfAAAAOqWAj8e8+M9vhz5p9Npmm2Yduc3f10/1qWP4Y/BXwp7kQ8AAEC9SlF/JPSLkZ9GfA+/JEV+GpvGaP+4bvl/8rP/0m+7obOTDwAAwA+yFvN7Q391236O8mmk6I/j3YEPAAAAbIrWXov4OBdr1mx/Nj+TYn/rogAAAMD/p9YBAACgEiIfAAAAKiHyAQAAoBIiHwAAAKowDH8BDlK+17zQ88MAAAAASUVORK5CYII=" />
+                                  </ui:OnImageAppear.Image>
+                                  <ui:OnImageAppear.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='eclinicalworks.exe' cls='ThunderRT6FormDC' title='Claim ' /&gt;" TimeoutMS="1200000" WaitForReady="INTERACTIVE" />
+                                  </ui:OnImageAppear.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:OnImageAppear>
+                                <ui:ExcelWriteCell Cell="[&quot;AO&quot; +row_num.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="726,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="page" Text="PROCESSED" />
+                              </Sequence>
+                            </Sequence>
+                          </If.Then>
+                        </If>
+                      </If.Else>
+                    </If>
+                    <Assign sap:VirtualizedContainerService.HintSize="1050,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[row_num]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="ui:GenericValue">[row_num+1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+  </Sequence>
+</Activity>
